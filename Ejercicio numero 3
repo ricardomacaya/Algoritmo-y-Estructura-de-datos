@@ -1,0 +1,35 @@
+import time 
+import random
+
+def promedio():
+    valor = 0
+    for a in range (0,10):
+        valor += calcular_matriz(crear_matriz(10, 2000),0)
+    print(valor/10)
+    
+def calcular_matriz(matriz,promedio_r):
+    inicio = time.time()
+    
+    for fila in matriz:
+        valor = 0
+        for columna in fila:
+            valor += columna
+        promedio = valor/len(fila)
+        promedio_r += promedio
+    print(promedio_r/len(matriz))
+
+    fin = time.time()
+    tiempo = fin-inicio 
+    return tiempo
+
+def crear_matriz(nota, asignatura):
+    notas = [1,2,3,4,5,6,7]
+    matriz=[]
+    for a in range(asignatura):
+        fila = []
+        for b in range(nota):
+            fila.append(random.choice(notas))
+        matriz.append(fila)
+    return matriz
+
+promedio()
